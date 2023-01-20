@@ -16,7 +16,7 @@ public class UserController {
      @GetMapping
     public List<User> findAllUsers(){
 
-       return  userService.getUserWithMoreThan1Post();
+       return  userService.findAll();
     }
 
     @GetMapping("/{id}")
@@ -41,7 +41,12 @@ public class UserController {
 public List<Post> findUserPosts(@PathVariable long id){
 
          return userService.findUserPost(id);
+}
 
+@GetMapping("/moreThanOnePost")
+public List<User> getUserWithMoreThanOnePost(){
+
+      return userService.getUserWithMoreThan1Post();
 }
 
 

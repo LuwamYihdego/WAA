@@ -9,7 +9,8 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 @Repository
 public interface UserRepo extends CrudRepository<User,Long> {
-    @Query("select user from User user where user.posts.size")
+
+    @Query("select user from User user where size(user.posts) >=1 ")
     List<User> getUserWithPostGreaterThanOne();
     @Query("select user.posts from User user where user.id = :id")
     List<Post> getUserPostsByUserId(long id);

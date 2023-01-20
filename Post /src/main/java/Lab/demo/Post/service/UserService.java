@@ -20,5 +20,5 @@ public interface UserService {
     User updateUser(long id, User user);
 
    List<Post> findUserPost(long id);
-    List<User> getUserWithMoreThan1Post();
+   List<User> getUserWithMoreThan1Post();
 }
