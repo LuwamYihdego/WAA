@@ -1,5 +1,6 @@
 package Lab.demo.Post.service.Impl;
 
+import Lab.demo.Post.domain.Comment;
 import Lab.demo.Post.domain.Post;
 import Lab.demo.Post.repository.PostRepo;
 import Lab.demo.Post.repository.UserRepo;
@@ -36,9 +37,9 @@ public class PostServiceImpl implements PostService {
 
 
     @Override
-    public void deletById(long id) {
-      postRepo.deleteById(id);
-
+    public String deletById(long id) {
+       postRepo.deleteById(id);
+       return "Deleted";
     }
 
     @Override
@@ -53,10 +54,17 @@ public class PostServiceImpl implements PostService {
        updatedPost.setAutor(p.getAutor());
        updatedPost.setTitle(p.getTitle());
        updatedPost.setContent(p.getContent());
+       updatedPost.setComments(p.getComments());
       return updatedPost;
     }
 
+    @Override
+    public Post creatComment(long id, Comment comment) {
+        Post post = postRepo.findById(id).orElse(null);
+         post.getComments().add(comment);
 
+         return post;
+    }
 
 
 }

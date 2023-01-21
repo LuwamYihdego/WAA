@@ -1,5 +1,6 @@
 package Lab.demo.Post.controller;
 
+import Lab.demo.Post.domain.Comment;
 import Lab.demo.Post.domain.Post;
 import Lab.demo.Post.service.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,8 +22,10 @@ public class PostController {
         return postService.findById(id);
     }
     @DeleteMapping("/{id}")
-    public void deletePostById(@PathVariable long id){
+    public String deletePostById(@PathVariable long id){
          postService.deletById(id);
+
+         return "Deleted";
     }
     @PutMapping("/{id}")
     public Post updatePostById(@RequestBody Post post, @PathVariable long id){
@@ -39,7 +42,11 @@ public class PostController {
 
         return postService.findPostByAutor(autored);
     }
+    @PostMapping("/{id}/comment")
+    public void creatCommentByPostId(@PathVariable long id, @RequestBody Comment comment){
+        postService.creatComment(id,comment);
 
+    }
 
 
 

@@ -49,7 +49,15 @@ public List<User> getUserWithMoreThanOnePost(){
       return userService.getUserWithMoreThan1Post();
 }
 
+    @GetMapping("/greaterThan/{id}")
+    public List<User> getUserWithMoreThanNPost(@PathVariable("id") int n){
 
+        return userService.getUserWithMoreThanNPost(n);
+    }
+@GetMapping("/posts")
+    public List<User> getUserWhoPostedTitle(@RequestParam("title") String title) {
+        return userService.getUserWhoPostedTitle(title);
+    }
 
 
 

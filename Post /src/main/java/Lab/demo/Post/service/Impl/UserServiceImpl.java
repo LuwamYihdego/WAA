@@ -59,4 +59,15 @@ public class UserServiceImpl implements UserService {
     public List<User> getUserWithMoreThan1Post() {
         return userRepo.getUserWithPostGreaterThanOne();
     }
+
+    @Override
+    public List<User> getUserWithMoreThanNPost(int n){
+        return userRepo.getUserWithMoreThanNPost(n);
+    }
+
+    @Override
+    public List<User> getUserWhoPostedTitle(String title) {
+        return userRepo.getUserWhoPostedTitle(title);
+    }
+
 }

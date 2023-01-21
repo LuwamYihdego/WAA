@@ -21,4 +21,8 @@ public interface UserService {
 
    List<Post> findUserPost(long id);
    List<User> getUserWithMoreThan1Post();
+
+    List<User> getUserWithMoreThanNPost(int n);
+
+    List<User> getUserWhoPostedTitle(String title);
 }
